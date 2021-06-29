@@ -31,6 +31,13 @@ export const PageContentWrapper = styled.div`
 `;
 
 export const InputWrapper = styled.div`
+  form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   display: flex;
   justify-content: center;
   align-items: center;
