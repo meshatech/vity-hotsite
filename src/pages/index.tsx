@@ -1,6 +1,6 @@
-import useWindowDimensions from '@/hooks/useWindowDimensions';
+import useMedia from '@/hooks/media';
 import {
-  BackgroundImage,
+  PageBackground,
   CompanyLogo,
   InputWrapper,
   PageContainer,
@@ -11,7 +11,7 @@ import {
 import { useCallback } from 'react';
 
 export default function Home() {
-  const { width } = useWindowDimensions();
+  const mobile = useMedia(`(max-width: 550px)`);
 
   const handleSubmit = useCallback((event) => {
     event.preventDefault();
@@ -30,37 +30,39 @@ export default function Home() {
   }, []);
 
   return (
-    <PageContainer>
-      <BackgroundImage src="/imagem.png" layout="fill" />
-      <CompanyLogo src="/logo.svg" height={84} width={126} />
+    <PageBackground>
+      <PageContainer>
+        <header>
+          <CompanyLogo src="/logo.svg" height={84} width={126} />
+        </header>
 
-      <PageContentWrapper>
-        <PageTopContentWrapper>
-          <h1>Seja um dos primeiros a saber</h1>
-          <InputWrapper>
-            <form onSubmit={handleSubmit}>
-              <input type="hidden" name="u" value="9" />
-              <input type="hidden" name="f" value="9" />
-              <input type="hidden" name="s" />
-              <input type="hidden" name="c" value="0" />
-              <input type="hidden" name="m" value="0" />
-              <input type="hidden" name="act" value="sub" />
-              <input type="hidden" name="v" value="2" />
-              <input
-                type="text"
-                id="email"
-                name="email"
-                placeholder="Seu melhor e-mail"
-              />
-              <button id="_form_9_submit" type="submit">
-                Ok
-              </button>
-            </form>
-          </InputWrapper>
-        </PageTopContentWrapper>
-
-        <PageImage src={width && width < 550 ? `/mobile.png` : `/web.svg`} />
-      </PageContentWrapper>
-    </PageContainer>
+        <PageContentWrapper>
+          <PageTopContentWrapper>
+            <h1>Seja um dos primeiros a saber</h1>
+            <InputWrapper>
+              <form onSubmit={handleSubmit}>
+                <input type="hidden" name="u" value="9" />
+                <input type="hidden" name="f" value="9" />
+                <input type="hidden" name="s" />
+                <input type="hidden" name="c" value="0" />
+                <input type="hidden" name="m" value="0" />
+                <input type="hidden" name="act" value="sub" />
+                <input type="hidden" name="v" value="2" />
+                <input
+                  type="text"
+                  id="email"
+                  name="email"
+                  placeholder="Seu melhor e-mail"
+                />
+                <button id="_form_9_submit" type="submit">
+                  Ok
+                </button>
+              </form>
+            </InputWrapper>
+          </PageTopContentWrapper>
+          <PageImage src={mobile ? `/mobile.svg` : `/web.svg`} />
+        </PageContentWrapper>
+      </PageContainer>
+    </PageBackground>
   );
 }

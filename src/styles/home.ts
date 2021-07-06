@@ -1,5 +1,10 @@
 import styled from 'styled-components';
-import Image from 'next/image';
+
+export const PageBackground = styled.div`
+  height: 100vh;
+  background: url('/bg.png') no-repeat center center;
+  background-size: cover;
+`;
 
 export const PageContainer = styled.div`
   position: absolute;
@@ -7,16 +12,20 @@ export const PageContainer = styled.div`
   right: 0%;
   top: 0%;
   bottom: 0%;
-  background: rgba(37, 55, 70, 0.9);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 23px;
 
-  padding: 40px 120px;
   display: flex;
   flex-direction: column;
-  align-content: flex-start;
-  flex: 1;
-`;
-export const BackgroundImage = styled(Image as any)`
-  background: linear-gradient(180deg, rgba(37, 55, 70, 0) 0%, #253746 100%);
+
+  header {
+    display: flex;
+
+    @media (max-width: 550px) {
+      justify-content: center;
+    }
+  }
 `;
 
 export const PageContentWrapper = styled.div`
@@ -102,8 +111,9 @@ export const PageTopContentWrapper = styled.div`
   z-index: 10000;
   width: 50vw;
 
-  @media (max-width: 600) {
-    width: 100vw !important;
+  @media (max-width: 600px) {
+    width: 100vw;
+    flex: 1;
   }
 
   h1 {
@@ -141,13 +151,7 @@ export const PageImage = styled.img`
 
   @media (max-width: 600px) {
     width: 100vw;
-    margin-bottom: 50px;
   }
 `;
 
-export const CompanyLogo = styled.img`
-  @media (max-width: 550px) {
-    margin-left: auto;
-    margin-right: auto;
-  }
-`;
+export const CompanyLogo = styled.img``;
